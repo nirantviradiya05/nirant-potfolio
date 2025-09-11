@@ -8,6 +8,13 @@ const ParallaxBackground = () => {
   const mountain2Y = useTransform(x, [0, 0.5], ["0%", "30%"]);
   const mountain1Y = useTransform(x, [0, 0.5], ["0%", "0%"]);
 
+  // ✅ asset paths fixed for GitHub Pages
+  const sky = `${import.meta.env.BASE_URL}assets/sky.jpg`;
+  const mountain3 = `${import.meta.env.BASE_URL}assets/mountain-3.png`;
+  const planets = `${import.meta.env.BASE_URL}assets/planets.png`;
+  const mountain2 = `${import.meta.env.BASE_URL}assets/mountain-2.png`;
+  const mountain1 = `${import.meta.env.BASE_URL}assets/mountain-1.png`;
+
   return (
     <section className="absolute inset-0 bg-black/40">
       <div className="relative h-screen overflow-y-hidden">
@@ -15,7 +22,7 @@ const ParallaxBackground = () => {
         <div
           className="absolute inset-0 w-full h-screen -z-50"
           style={{
-            backgroundImage: "url(/assets/sky.jpg)",
+            backgroundImage: `url(${sky})`,
             backgroundPosition: "bottom",
             backgroundSize: "cover",
           }}
@@ -24,7 +31,7 @@ const ParallaxBackground = () => {
         <motion.div
           className="absolute inset-0 -z-40"
           style={{
-            backgroundImage: "url(/assets/mountain-3.png)",
+            backgroundImage: `url(${mountain3})`,
             backgroundPosition: "bottom",
             backgroundSize: "cover",
             y: mountain3Y,
@@ -34,7 +41,7 @@ const ParallaxBackground = () => {
         <motion.div
           className="absolute inset-0 -z-30"
           style={{
-            backgroundImage: "url(/assets/planets.png)",
+            backgroundImage: `url(${planets})`,
             backgroundPosition: "bottom",
             backgroundSize: "cover",
             x: planetsX,
@@ -44,17 +51,17 @@ const ParallaxBackground = () => {
         <motion.div
           className="absolute inset-0 -z-20"
           style={{
-            backgroundImage: "url(/assets/mountain-2.png)",
+            backgroundImage: `url(${mountain2})`,
             backgroundPosition: "bottom",
             backgroundSize: "cover",
             y: mountain2Y,
           }}
         />
-        {/* Mountaine Layer 1 */}
+        {/* Mountain Layer 1 */}
         <motion.div
           className="absolute inset-0 -z-10"
           style={{
-            backgroundImage: "url(/assets/mountain-1.png)",
+            backgroundImage: `url(${mountain1})`,
             backgroundPosition: "bottom",
             backgroundSize: "cover",
             y: mountain1Y,

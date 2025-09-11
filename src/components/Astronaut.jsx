@@ -13,10 +13,13 @@ import { useFrame } from "@react-three/fiber";
 
 export function Astronaut(props) {
   const group = useRef();
-  const { nodes, materials, animations } = useGLTF(
-    "/models/tenhun_falling_spaceman_fanart.glb"
-  );
+
+  // ✅ Fixed path for GitHub Pages
+  const modelPath = `${import.meta.env.BASE_URL}models/tenhun_falling_spaceman_fanart.glb`;
+
+  const { nodes, materials, animations } = useGLTF(modelPath);
   const { actions } = useAnimations(animations, group);
+
   useEffect(() => {
     if (animations.length > 0) {
       actions[animations[0].name]?.play();
@@ -25,12 +28,15 @@ export function Astronaut(props) {
 
   const yPosition = useMotionValue(5);
   const ySpring = useSpring(yPosition, { damping: 30 });
+
   useEffect(() => {
     ySpring.set(-1);
   }, [ySpring]);
+
   useFrame(() => {
     group.current.position.y = ySpring.get();
   });
+
   return (
     <group
       ref={group}
@@ -127,4 +133,5 @@ export function Astronaut(props) {
   );
 }
 
-useGLTF.preload("/models/tenhun_falling_spaceman_fanart.glb");
+// ✅ Preload with fixed path
+useGLTF.preload(`${import.meta.env.BASE_URL}models/tenhun_falling_spaceman_fanart.glb`);
